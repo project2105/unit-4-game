@@ -1,0 +1,24 @@
+.gemButtons {
+    margin: 0;
+    padding: 0;
+}
+
+.blue {
+    color: #74b2e1;
+}
+
+.green {
+    color: #95c94a;
+}
+
+.yellow {
+    color: #ebd355;
+}
+
+.purple {
+    color: #c228a0;
+}
+
+orders {
+    border: 5pt solid black;
+}
