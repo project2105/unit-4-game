@@ -8,13 +8,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
         crossorigin="anonymous">
-    <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/style.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="./assets/css/style.css" />
 </head>
 
 <body>
     <div class="container-fluid">
         <div class="row">
-            <header class="col-sm-12">
+            <header class="col-md-12">
                 <h1>
                     <span class="blue">POC</span>
                     <span class="green">KET</span>
@@ -25,71 +25,85 @@
             </header>
         </div>
         <div class="row" id="instructions">
-            <p>In this game, you are a successful dealer in bulk gemstones from Chicago's Jeweler's Row. It is your job to fill
-                orders of random assortments of gems based on the total value of the order.</p>
+            <p>In this game, you are a successful dealer in bulk gemstones from Chicago's Jeweler's Row. You fill orders of
+                random assortments of gems based on the total value of the order. Each bulk order of gems is for a set value.
+                Each type of gem has its own value. Click on the gems to build the current value. The value of the chosen
+                gems need to equal the target value. If the value of gems exceed the target value, the order fail. To move
+                to the next order, simply hit the next order value.</p>
         </div>
         <div class="row">
-            <section class="col-sm-4 orders" id="filledOrders">
-                <h2>Filled Orders</h2>
+            <section class="col-md-4 orders">
+                <h2>Filled Orders:
+                    <span id="filledOrders">0</span>
+                </h2>
             </section>
-            <section class="col-sm-4 orders" id="failedOrders">
-                <h2>Failed Orders</h2>
+            <section class="col-md-4 orders">
+                <h2>Failed Orders:
+                    <span id="failedOrders">0</span>
+                </h2>
             </section>
-            <section class="col-sm-4 orders" id="nextOrder">
-                <button type="button">Next Order</button>
+            <section class="col-md-4 orders" id="nextOrder">
+                <button type="button" onclick="setGame();">Next Order</button>
             </section>
         </div>
+        <br>
         <main class="row">
-            <div class="row">
-                <section class="col-sm-4 gemButtons" id="sapphire">
-                    <div class="card">
-                        <button type="button">
-                            <img class="card-img-top" src="assets/images/blueGem.png" alt="Sapphire">
-                        </button>
-                        <div class="card-body">
-                            <p class="card-text">Sapphire</p>
+            <div class="col-md-10 col-md-offset-2 col-centered">
+                <div class="row">
+                    <section class="col-md-4 gemButtons" id="sapphire">
+                        <div class="card">
+                            <button type="button" onclick="addBlue();">
+                                <img class="card-img-top" src="assets/images/blueGem.png" alt="Sapphire">
+                            </button>
+                            <div class="card-body">
+                                <p class="card-text">Sapphire</p>
+                            </div>
                         </div>
-                    </div>
-                </section>
-                <section class="col-sm-4 gemButtons" id="topaz">
-                    <div class="card">
-                        <button type="button">
-                            <img class="card-img-top" src="assets/images/yellowGem.png" alt="Topaz">
-                        </button>
-                        <div class="card-body">
-                            <p class="card-text">Topaz</p>
+                    </section>
+                    <section class="col-md-4 gemButtons" id="topaz">
+                        <div class="card">
+                            <button type="button" onclick="addYellow();">
+                                <img class="card-img-top" src="assets/images/yellowGem.png" alt="Topaz">
+                            </button>
+                            <div class="card-body">
+                                <p class="card-text">Topaz</p>
+                            </div>
                         </div>
-                    </div>
-                </section>
-                <section class="col-sm-4" id="targetValue">
-
-                </section>
-
-            </div>
-            <div class="row">
-                <section class="col-sm-4 gemButtons" id="emerald">
-                    <div class="card">
-                        <button type="button">
-                            <img class="card-img-top" src="assets/images/greenGem.png" alt="Emerald">
-                        </button>
-                        <div class="card-body">
-                            <p class="card-text">Emerald</p>
+                    </section>
+                    <section class="col-md-4 values">
+                        <h2>Target Value:</h2>
+                        <p>
+                            <span id="targetValue">0</span>K</p>
+                    </section>
+                </div>
+                <br>
+                <div class="row">
+                    <section class="col-md-4 gemButtons" id="emerald">
+                        <div class="card">
+                            <button type="button" onclick="addGreen();">
+                                <img class="card-img-top" src="assets/images/greenGem.png" alt="Emerald">
+                            </button>
+                            <div class="card-body">
+                                <p class="card-text">Emerald</p>
+                            </div>
                         </div>
-                    </div>
-                </section>
-                <section class="col-sm-4 gemButtons" id="amethyst">
-                    <div class="card">
-                        <button type="button">
-                            <img class="card-img-top" src="assets/images/purpleGem.png" alt="Amethyst">
-                        </button>
-                        <div class="card-body">
-                            <p class="card-text">Amethyst</p>
+                    </section>
+                    <section class="col-md-4 gemButtons" id="amethyst">
+                        <div class="card">
+                            <button type="button" onclick="addPurple();">
+                                <img class="card-img-top" src="assets/images/purpleGem.png" alt="Amethyst">
+                            </button>
+                            <div class="card-body">
+                                <p class="card-text">Amethyst</p>
+                            </div>
                         </div>
-                    </div>
-                </section>
-                <section class="col-sm-4" id="thisOrder">
-
-                </section>
+                    </section>
+                    <section class="col-md-4 values">
+                        <h2>Current Value:</h2>
+                        <p>
+                            <span id="currentValue">0</span>K</p>
+                    </section>
+                </div>
             </div>
         </main>
     </div>
